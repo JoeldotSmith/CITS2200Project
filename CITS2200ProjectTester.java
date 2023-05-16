@@ -31,7 +31,7 @@ public class CITS2200ProjectTester {
 
 		// Write your own tests!
         addEdgeTest(proj);
-        //getShortestPathTest(proj);
+        getShortestPathTest(proj, pathToGraphFile);
         getHamiltonianPathTest(proj);
 	}
 
@@ -57,44 +57,48 @@ public class CITS2200ProjectTester {
     }
 
 
-    public static void getShortestPathTest(Project project){
+    public static void getShortestPathTest(Project project, String path){
         System.out.println("\ngetShortestPathTest\n");
-        int test0 = project.getShortestPath("/wiki/Maximum_flow_problem", "/wiki/Maximum_flow_problem");
-        if (test0 == 0){
-            System.out.println("Passed 0: needed 0 got " + Integer.toString(test0));
-        } else{
-            System.out.println("Failed: needed 0 got " + Integer.toString(test0));
+        if (path.equals("example_graph.txt")){
+            int test0 = project.getShortestPath("/wiki/Maximum_flow_problem", "/wiki/Maximum_flow_problem");
+            if (test0 == 0){
+                System.out.println("Passed 0: needed 0 got " + Integer.toString(test0));
+            } else{
+                System.out.println("Failed: needed 0 got " + Integer.toString(test0));
+            }
+            int test1 = project.getShortestPath("/wiki/Maximum_flow_problem", "/wiki/Multi-commodity_flow_problem");
+            if (test1 == 2){
+                System.out.println("Passed 1: needed 2 got " + Integer.toString(test1));
+            } else{
+                System.out.println("Failed: needed 2 got " + Integer.toString(test1));
+            }
+            int test2 = project.getShortestPath("/wiki/Flow_network", "/wiki/Nowhere-zero_flow");
+            if (test2 == -1){
+                System.out.println("Passed 2: needed -1 got " + Integer.toString(test2));
+            } else{
+                System.out.println("Failed: needed -1 got " + Integer.toString(test2));
+            }
+            int test3 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Flow_network");
+            if (test3 == 1){
+                System.out.println("Passed 3: needed 1 got " + Integer.toString(test3));
+            } else{
+                System.out.println("Failed: needed 1 got " + Integer.toString(test3));
+            }
+            int test4 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Gomory%E2%80%93Hu_tree");
+            if (test4 == 6){
+                System.out.println("Passed 4: needed 6 got " + Integer.toString(test4));
+            } else{
+                System.out.println("Failed: needed 6 got " + Integer.toString(test4));
+            } 
+            int test5 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Braess%27_paradox");
+            if (test5 == 2){
+                System.out.println("Passed 5: needed 2 got " + Integer.toString(test5));
+            } else{
+                System.out.println("Failed: needed 2 got " + Integer.toString(test5));
+            }
         }
-        int test1 = project.getShortestPath("/wiki/Maximum_flow_problem", "/wiki/Multi-commodity_flow_problem");
-        if (test1 == 2){
-            System.out.println("Passed 1: needed 2 got " + Integer.toString(test1));
-        } else{
-            System.out.println("Failed: needed 2 got " + Integer.toString(test1));
-        }
-        int test2 = project.getShortestPath("/wiki/Flow_network", "/wiki/Nowhere-zero_flow");
-        if (test2 == -1){
-            System.out.println("Passed 2: needed -1 got " + Integer.toString(test2));
-        } else{
-            System.out.println("Failed: needed -1 got " + Integer.toString(test2));
-        }
-        int test3 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Flow_network");
-        if (test3 == 1){
-            System.out.println("Passed 3: needed 1 got " + Integer.toString(test3));
-        } else{
-            System.out.println("Failed: needed 1 got " + Integer.toString(test3));
-        }
-        int test4 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Gomory%E2%80%93Hu_tree");
-        if (test4 == 6){
-            System.out.println("Passed 4: needed 6 got " + Integer.toString(test4));
-        } else{
-            System.out.println("Failed: needed 6 got " + Integer.toString(test4));
-        } 
-        int test5 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Braess%27_paradox");
-        if (test5 == 2){
-            System.out.println("Passed 5: needed 2 got " + Integer.toString(test5));
-        } else{
-            System.out.println("Failed: needed 2 got " + Integer.toString(test5));
-        }
+        
+        
     }
 
     public static void getHamiltonianPathTest(Project project){
