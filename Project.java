@@ -188,10 +188,10 @@ public class Project implements CITS2200Project{
 
     @Override
     public String[] getCenters() {
-        // TODO Auto-generated method stub
+        // TODO part 4 getCenters()
         throw new UnsupportedOperationException("Unimplemented method 'getCenters'");
     }
-
+    
     /*
      * Part 3
      * Two pass algorithm utilising depth first search
