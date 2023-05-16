@@ -214,6 +214,19 @@ public class Project implements CITS2200Project{
             numComponants += 1;
         }
 
+        ArrayList<ArrayList<String>> strongComponants = new ArrayList<>();
+        for (int i = 0; i < L.size(); i++){
+            ArrayList<String> temp = new ArrayList<>();
+            for (Vertex vert : tree){
+                if (vert.getComponant() == i){
+                    temp.add(tree.get(vert.getVertNum()).name());
+                }
+            }
+            strongComponants.add(temp);
+
+        }
+        
+
 
 
 
