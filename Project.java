@@ -11,6 +11,7 @@ public class Project implements CITS2200Project{
     static int numOfVertex = 0;
     ArrayList<String> HamiltonianPath = new ArrayList<>();
     ArrayList<Vertex> L = new ArrayList<>();
+    int numComponants = 0;
 
     public ArrayList<Vertex> getTree(){
         return tree;
@@ -208,6 +209,10 @@ public class Project implements CITS2200Project{
         for (int i = 0; i < tree.size(); i++){
             visit(tree.get(i));
         }
+        for (int i = 0; i < L.size(); i++){
+            assign(tree.get(L.get(i).getVertNum()), numComponants);
+            numComponants += 1;
+        }
 
 
 
@@ -290,7 +295,13 @@ public class Project implements CITS2200Project{
     }
 
     private void assign(Vertex u, int root){
-
+        if (u.componant == -1){
+            tree.get(u.getVertNum()).setComponant(root);
+            for (int i = 0; i < u.getAllLinks().size(); i++){
+                assign(tree.get(u.getlink(i).getIndex()), root);
+            }
+        }
+        return;
     }
 
     public class Vertex{
