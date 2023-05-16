@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+// to compile and run/test
+// javac CITS220ProjectTester.java
+// java CITS220ProjectTester.java
 
 
 public class Project implements CITS2200Project{
@@ -7,6 +10,7 @@ public class Project implements CITS2200Project{
     ArrayList<Vertex> tree = new ArrayList<>();
     static int numOfVertex = 0;
     ArrayList<String> HamiltonianPath = new ArrayList<>();
+    ArrayList<Vertex> L = new ArrayList<>();
 
     public ArrayList<Vertex> getTree(){
         return tree;
@@ -17,7 +21,7 @@ public class Project implements CITS2200Project{
 
 
 
-    @Override
+
     public void addEdge(String urlFrom, String urlTo) {
         boolean fromInTree = false;
         boolean toInTree = false;
@@ -189,14 +193,22 @@ public class Project implements CITS2200Project{
 
     /*
      * Part 3
-     * Maybe check https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
-     * or https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
+     * Two pass algorithm utilising depth first search
+     * https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
      * 
      */
     public String[][] getStronglyConnectedComponents() {
         if (tree.size() == 0){
             throw new IllegalStateException("Tree size = 0 need to addEdge() first");
         }
+
+        for (int i = 0; i < tree.size(); i++){
+            tree.get(i).setExplored(0);
+        }
+
+
+
+
 
 
 
@@ -262,14 +274,24 @@ public class Project implements CITS2200Project{
         return false;
     }
 
-
+    private void visit(Vertex v){
+        if (v.getExplored() == 0){
+            tree.get(v.getVertNum()).setExplored(1);
+            for (int i = 0; i < v.getAllLinks().size(); i++){
+                visit(tree.get(v.getlink(i).getIndex()));
+            }
+            L.add(0, tree.get(v.getVertNum()));
+            
+        }
+        return;
+    }
 
     public class Vertex{
         private String name;
         private int vertNum;
         private ArrayList<Edge> links;
-        private int explored = 0;
-        private int parentNum = -1;
+        private int explored = 0; // 0 = notExplored, 1 = explored
+        private int parentNum = -1; // Parent index, -1 if orphan
         private int inStack = 0; // 0 = notInStack, 1 = inStack
         
 
