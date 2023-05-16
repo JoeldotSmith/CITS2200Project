@@ -34,3 +34,15 @@
 /wiki/test18
 /wiki/test18
 /wiki/test19
+/wiki/test13
+/wiki/test17
+/wiki/test5
+/wiki/test9
+/wiki/test9
+/wiki/test4
+/wiki/test2
+/wiki/test4
+/wiki/test10
+/wiki/test11
+/wiki/test10
+/wiki/test12
