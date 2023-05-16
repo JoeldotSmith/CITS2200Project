@@ -205,6 +205,9 @@ public class Project implements CITS2200Project{
         for (int i = 0; i < tree.size(); i++){
             tree.get(i).setExplored(0);
         }
+        for (int i = 0; i < tree.size(); i++){
+            visit(tree.get(i));
+        }
 
 
 
@@ -286,6 +289,10 @@ public class Project implements CITS2200Project{
         return;
     }
 
+    private void assign(Vertex u, int root){
+
+    }
+
     public class Vertex{
         private String name;
         private int vertNum;
@@ -293,6 +300,7 @@ public class Project implements CITS2200Project{
         private int explored = 0; // 0 = notExplored, 1 = explored
         private int parentNum = -1; // Parent index, -1 if orphan
         private int inStack = 0; // 0 = notInStack, 1 = inStack
+        private int componant = -1; // -1 if has no componant
         
 
         /*
@@ -351,6 +359,23 @@ public class Project implements CITS2200Project{
             return inStack;
         }
 
+        /*
+         * gets componant int
+         */
+        public int getComponant(){
+            return componant;
+        }
+
+        /*
+         * sets componant to i
+         */
+        public void setComponant(int i){
+            componant = i;
+        }
+
+        /*
+         * Sets stack to i
+         */
         public void setStack(int i){
             inStack = i;
         }
