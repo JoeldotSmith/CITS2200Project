@@ -62,6 +62,7 @@ public class Project implements CITS2200Project{
     }
 
     /*
+     * Part 1
      * Tree is a non weighted graph so dikstra, a-star ect wont work so breadth first search it is complexity O(E+V)
      * https://en.wikipedia.org/wiki/Breadth-first_search
      * 
@@ -186,22 +187,34 @@ public class Project implements CITS2200Project{
         throw new UnsupportedOperationException("Unimplemented method 'getCenters'");
     }
 
-    @Override
+    /*
+     * Part 3
+     * Maybe check https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
+     * or https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
+     * 
+     */
     public String[][] getStronglyConnectedComponents() {
-        // TODO Auto-generated method stub
+        if (tree.size() == 0){
+            throw new IllegalStateException("Tree size = 0 need to addEdge() first");
+        }
+
+
+
+
+
         throw new UnsupportedOperationException("Unimplemented method 'getStronglyConnectedComponents'");
     }
 
     /*
+     * Part 2
      * Implimentation of a depth first search + backtracking to find if a hamilton path exits or not
      * Complexity O(N!)
-     * 
      * 
      * https://www.hackerearth.com/practice/algorithms/graphs/hamiltonian-path/tutorial/#:~:text=Hamiltonian%20Path%20is%20a%20path,Hamiltonian%20Paths%20in%20a%20graph.
      */
     public String[] getHamiltonianPath() {
         if (tree.size() > 20){
-            throw new IllegalStateException("Tree too large for Hamiltonian path: tree.size() > 20");
+            throw new IllegalStateException("Tree too large for Hamiltonian path: tree.size() must be <20");
         }
         if (tree.size() == 0){
             throw new IllegalStateException("Tree size = 0 need to addEdge() first");
