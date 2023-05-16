@@ -214,6 +214,13 @@ public class Project implements CITS2200Project{
             numComponants += 1;
         }
 
+
+
+
+
+
+
+        // Converting to correct type String[][] seperate from algorithm
         ArrayList<ArrayList<String>> strongComponants = new ArrayList<>();
         int largestComponant = 0;
         for (int i = 0; i < L.size(); i++){
