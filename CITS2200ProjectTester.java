@@ -33,6 +33,7 @@ public class CITS2200ProjectTester {
         addEdgeTest(proj);
         getShortestPathTest(proj, pathToGraphFile);
         getHamiltonianPathTest(proj);
+        getStronglyConnectedComponentsTest(proj);
 	}
 
 
@@ -124,6 +125,22 @@ public class CITS2200ProjectTester {
         } else{
             for (String s : result){
                 System.out.println(s);
+            }
+        }
+    }
+
+
+    public static void getStronglyConnectedComponentsTest(Project project){
+        System.out.println("\ngetStronglyConnectedComponentsTest\n");
+
+        String[][] result = project.getStronglyConnectedComponents();
+        if (result.length == 0){
+            System.out.println("No Strongly Connected Componants Found");
+        } else{
+            for (String[] sArr : result){
+                for (String str : sArr){
+                    System.out.println(str);
+                }
             }
         }
     }
