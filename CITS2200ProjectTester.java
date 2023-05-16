@@ -139,8 +139,12 @@ public class CITS2200ProjectTester {
         } else{
             for (String[] sArr : result){
                 for (String str : sArr){
-                    System.out.println(str);
+                    if (str != null){
+                        System.out.println(str);
+                    }
+                    
                 }
+                System.out.println("\n");
             }
         }
     }
