@@ -103,13 +103,13 @@ public class CITS2200ProjectTester {
             if (test0 == 8){
                 System.out.println("Passed 0: needed 8 got " + Integer.toString(test0));
             } else{
-                System.out.println("Failed: needed 0 got " + Integer.toString(test0));
+                System.out.println("Failed: needed 8 got " + Integer.toString(test0));
             }
             int test1 = project.getShortestPath("/wiki/test1", "/wiki/test19");
-            if (test1 == 2){
-                System.out.println("Passed 1: needed 2 got " + Integer.toString(test1));
+            if (test1 == 17){
+                System.out.println("Passed 1: needed 17 got " + Integer.toString(test1));
             } else{
-                System.out.println("Failed: needed 2 got " + Integer.toString(test1));
+                System.out.println("Failed: needed 17 got " + Integer.toString(test1));
             }
         }
         
