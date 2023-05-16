@@ -215,27 +215,36 @@ public class Project implements CITS2200Project{
         }
 
         ArrayList<ArrayList<String>> strongComponants = new ArrayList<>();
+        int largestComponant = 0;
         for (int i = 0; i < L.size(); i++){
             ArrayList<String> temp = new ArrayList<>();
+            int count = 0;
             for (Vertex vert : tree){
+                
                 if (vert.getComponant() == i){
                     temp.add(tree.get(vert.getVertNum()).name());
+                    count++;
                 }
+            }
+            if (count > largestComponant){
+                largestComponant = count;
             }
             strongComponants.add(temp);
 
         }
         
+        String[][] comp = new String[L.size()][largestComponant];
+        int eye = 0;
+        int jay = 0;
+        for (ArrayList<String> sublist: strongComponants){
+            for (String str : sublist){
+                comp[eye][jay] = str;
+                jay++;
+            }
+            eye++;
+        }
 
-
-
-
-
-
-
-
-
-        throw new UnsupportedOperationException("Unimplemented method 'getStronglyConnectedComponents'");
+        return comp;
     }
 
     /*
