@@ -1,0 +1,37 @@
+test1 visited
+    edge of test1 (test2) gets visted
+        edge of test2 (test3) gets visited
+            edge of test3 (test1) gets visited
+                should return
+            edge of test3 (test4) gets visited
+                edge of test4 (test5) gets visited
+                    edge of test5 (test4) gets visited
+                        should return
+                    edge of test5 (test6) gets visted
+                        edge of test6 (test7) gets visited
+                            edge of test7 (test8) gets visited
+                                edge of test8 (test9) gets visited
+                                    edge of test9 (test10) gets visited
+                                        edge of test10 (test6) gets visited
+                                            should return
+                                            add test10 to L      
+                                        should return
+                                        add test9 to L
+                                    should return
+                                    add test8 to L
+                                should return
+                                add test7 to L
+                            should return
+                            add test6 to L
+                        should return
+                        add test5 to L
+                should return
+                add test 4 to L
+            should return
+            add test3 to L
+    should return
+    add test2 to L
+should return 
+add test1 to L
+
+L should look like
