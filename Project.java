@@ -329,7 +329,7 @@ public class Project implements CITS2200Project{
             // set as visited
             // for each neighbour of vertex visit it
             // prepend the vertex v to L
-        System.out.println("Now visiting starting with "+ tree.get(v.getVertNum()).name() + " index in tree = " + tree.get(v.getComponant()).getVertNum());
+        
         if (v.getExplored() == 0){
             tree.get(v.getVertNum()).setExplored(1);
             for (int i = 0; i < v.getAllLinks().size(); i++){
