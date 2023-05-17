@@ -35,3 +35,15 @@ should return
 add test1 to L
 
 L should look like
+{
+    test10
+    test9
+    test8
+    test7
+    test6
+    test5
+    test4
+    test3
+    test2
+    test1
+}
