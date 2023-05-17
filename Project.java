@@ -344,6 +344,7 @@ public class Project implements CITS2200Project{
             // assign u as componant root
             // for each neighbour of u, v assign(v, root)
         if (u.componant == -1){
+            System.out.println("         adding " + tree.get(u.getVertNum()).name());
             tree.get(u.getVertNum()).setComponant(root);
             for (int i = 0; i < u.getAllLinks().size(); i++){
                 assign(tree.get(u.getlink(i).getIndex()), root);
