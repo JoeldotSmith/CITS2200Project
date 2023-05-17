@@ -23,7 +23,7 @@ public class CITS2200ProjectTester {
 
 	public static void main(String[] args) {
 		// Change this to be the path to the graph file.
-		String pathToGraphFile = "testData.txt";
+		String pathToGraphFile = "example_graph.txt";
 		// Create an instance of your implementation.
 	    Project proj = new Project();
 		// Load the graph into the project.
