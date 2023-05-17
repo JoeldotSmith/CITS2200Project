@@ -203,12 +203,23 @@ public class Project implements CITS2200Project{
             throw new IllegalStateException("Tree size = 0 need to addEdge() first");
         }
 
+
+        // for each vertex of the graph set as unvisted
         for (int i = 0; i < tree.size(); i++){
             tree.get(i).setExplored(0);
         }
+
+        // for each vertex visit it
         for (int i = 0; i < tree.size(); i++){
             visit(tree.get(i));
         }
+        System.out.println("Debugging:");
+        for (Vertex vert : L){
+            System.out.println(vert.name());
+        }
+        System.out.println("\n");
+
+        // for each element u in order of L assign it
         for (int i = 0; i < L.size(); i++){
             assign(tree.get(L.get(i).getVertNum()), numComponants);
             numComponants += 1;
@@ -312,6 +323,10 @@ public class Project implements CITS2200Project{
     }
 
     private void visit(Vertex v){
+        // if unvisted
+            // set as visited
+            // for each neighbour of vertex visit it
+            // prepend the vertex v to L
         if (v.getExplored() == 0){
             tree.get(v.getVertNum()).setExplored(1);
             for (int i = 0; i < v.getAllLinks().size(); i++){
@@ -324,6 +339,9 @@ public class Project implements CITS2200Project{
     }
 
     private void assign(Vertex u, int root){
+        // if u hasnt been assigned to a componant
+            // assign u as componant root
+            // for each neighbour of u, v assign(v, root)
         if (u.componant == -1){
             tree.get(u.getVertNum()).setComponant(root);
             for (int i = 0; i < u.getAllLinks().size(); i++){

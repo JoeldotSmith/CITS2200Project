@@ -144,7 +144,7 @@ public class CITS2200ProjectTester {
                     }
                     
                 }
-                System.out.println("\n");
+                // System.out.println("\n");
             }
         }
     }
