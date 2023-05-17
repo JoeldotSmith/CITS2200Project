@@ -221,6 +221,7 @@ public class Project implements CITS2200Project{
 
         // for each element u in order of L assign it
         for (int i = 0; i < L.size(); i++){
+            System.out.println("Now creating new componant starting with "+ tree.get(L.get(i).getVertNum()).name() + " index in tree = " + tree.get(L.get(i).getVertNum()).getVertNum());
             assign(tree.get(L.get(i).getVertNum()), numComponants);
             numComponants += 1;
         }
