@@ -236,7 +236,8 @@ public class Project implements CITS2200Project{
         // Converting to correct type String[][] seperate from algorithm
         ArrayList<ArrayList<String>> strongComponants = new ArrayList<>();
         int largestComponant = 0;
-        for (int i = 0; i < L.size(); i++){
+        for (int i = 0; i <=
+         numComponants; i++){
             ArrayList<String> temp = new ArrayList<>();
             int count = 0;
             for (Vertex vert : tree){
@@ -251,6 +252,13 @@ public class Project implements CITS2200Project{
             }
             strongComponants.add(temp);
 
+        }
+
+        for (ArrayList<String> comp: strongComponants){
+            for (String str : comp){
+                System.out.println(str);
+            }
+            System.out.println("\n");
         }
         
         String[][] comp = new String[L.size()][largestComponant];
@@ -321,7 +329,7 @@ public class Project implements CITS2200Project{
             // set as visited
             // for each neighbour of vertex visit it
             // prepend the vertex v to L
-        System.out.println("Visiting " + v.name());
+        //System.out.println("Visiting " + v.name());
         if (v.getExplored() == 0){
             tree.get(v.getVertNum()).setExplored(1);
             for (int i = 0; i < v.getAllLinks().size(); i++){
@@ -330,7 +338,7 @@ public class Project implements CITS2200Project{
             L.add(tree.get(v.getVertNum()));
             
         }
-        System.out.println("Returning " + v.name());
+        //System.out.println("Returning " + v.name());
         return;
     }
 
@@ -338,12 +346,12 @@ public class Project implements CITS2200Project{
         // if u hasnt been assigned to a componant
             // assign u as componant root
             // for each neighbour of u, v assign(v, root)
-        System.out.println("Assign " + u.name() + " to " + Integer.toString(numComponants));
+        //System.out.println("Assign " + u.name() + " to " + Integer.toString(numComponants));
         if (tree.get(u.getVertNum()).getComponant() == -1){
             if (firstPart == 1){
                 numComponants += 1;
             }
-            System.out.println("         adding " + tree.get(u.getVertNum()).name());
+            //System.out.println("         adding " + tree.get(u.getVertNum()).name());
             tree.get(u.getVertNum()).setComponant(numComponants);
             for (int i = 0; i < u.getAllLinks().size(); i++){
                 assign(tree.get(u.getlink(i).getIndex()), 0);
