@@ -75,6 +75,7 @@ public class Project implements CITS2200Project{
      * 
      */
     public int getShortestPath(String urlFrom, String urlTo) {
+        // TODO fix bug where returns a path not the smallest path see CITS2200ProjectTester.java running example_graph.txt test4
 
         if (tree.isEmpty()){
             throw new IllegalStateException("Tree size = 0 need to addEdge() first");
