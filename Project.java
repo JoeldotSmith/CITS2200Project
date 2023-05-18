@@ -11,7 +11,7 @@ public class Project implements CITS2200Project{
     static int numOfVertex = 0;
     ArrayList<String> HamiltonianPath = new ArrayList<>();
     ArrayList<Vertex> L = new ArrayList<>();
-    int numComponants = 0;
+    int numComponants = -1;
 
     public ArrayList<Vertex> getTree(){
         return tree;
@@ -223,7 +223,7 @@ public class Project implements CITS2200Project{
         // for each element u in order of L assign it
         for (int i = 0; i < L.size(); i++){
             //System.out.println("Now creating new componant starting with "+ tree.get(L.get(i).getVertNum()).name() + " index in tree = " + tree.get(L.get(i).getVertNum()).getVertNum());
-            assign(tree.get(L.get(i).getVertNum()), numComponants);
+            assign(tree.get(L.get(i).getVertNum()), 1);
 
         }
 
@@ -334,19 +334,19 @@ public class Project implements CITS2200Project{
         return;
     }
 
-    private void assign(Vertex u, int root, int firstPart){
+    private void assign(Vertex u, int firstPart){
         // if u hasnt been assigned to a componant
             // assign u as componant root
             // for each neighbour of u, v assign(v, root)
-        System.out.println("Assign " + u.name() + " to " + Integer.toString(root));
+        System.out.println("Assign " + u.name() + " to " + Integer.toString(numComponants));
         if (tree.get(u.getVertNum()).getComponant() == -1){
             if (firstPart == 1){
                 numComponants += 1;
             }
             System.out.println("         adding " + tree.get(u.getVertNum()).name());
-            tree.get(u.getVertNum()).setComponant(root);
+            tree.get(u.getVertNum()).setComponant(numComponants);
             for (int i = 0; i < u.getAllLinks().size(); i++){
-                assign(tree.get(u.getlink(i).getIndex()), root, 0);
+                assign(tree.get(u.getlink(i).getIndex()), 0);
             }
         }
 
