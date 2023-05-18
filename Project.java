@@ -214,11 +214,11 @@ public class Project implements CITS2200Project{
             
             visit(tree.get(i));
         }
-        System.out.println("L:");
-        for (Vertex vert : L){
-            System.out.println(vert.name());
-        }
-        System.out.println("\n");
+        // System.out.println("L:");
+        // for (Vertex vert : L){
+        //     System.out.println(vert.name());
+        // }
+        // System.out.println("\n");
 
         // for each element u in order of L assign it
         for (int i = 0; i < L.size(); i++){
@@ -253,15 +253,14 @@ public class Project implements CITS2200Project{
             strongComponants.add(temp);
 
         }
-
-        for (ArrayList<String> comp: strongComponants){
-            for (String str : comp){
-                System.out.println(str);
+        String[][] comp = new String[numComponants+1][largestComponant];
+        
+        for (int i = 0; i < strongComponants.size(); i++){
+            for (int j = 0; j< strongComponants.get(i).size();j++){
+                comp[i][j] = strongComponants.get(i).get(j);
             }
-            System.out.println("\n");
         }
         
-        String[][] comp = new String[L.size()][largestComponant];
         
 
         return comp;

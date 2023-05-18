@@ -136,16 +136,16 @@ public class CITS2200ProjectTester {
         String[][] result = project.getStronglyConnectedComponents();
         if (result.length == 0){
             System.out.println("No Strongly Connected Componants Found");
-        // } else{
-        //     for (String[] sArr : result){
-        //         for (String str : sArr){
-        //             if (str != null){
-        //                 System.out.println(str);
-        //             }
+        } else{
+            for (String[] sArr : result){
+                for (String str : sArr){
+                    if (str != null){
+                        System.out.println(str);
+                    }
                     
-        //         }
-        //         // System.out.println("\n");
-        //     }
+                }
+                System.out.println("\n");
+            }
         }
     }
 }
