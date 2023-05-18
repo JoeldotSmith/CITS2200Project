@@ -224,7 +224,7 @@ public class Project implements CITS2200Project{
         for (int i = 0; i < L.size(); i++){
             //System.out.println("Now creating new componant starting with "+ tree.get(L.get(i).getVertNum()).name() + " index in tree = " + tree.get(L.get(i).getVertNum()).getVertNum());
             assign(tree.get(L.get(i).getVertNum()), numComponants);
-            numComponants += 1;
+
         }
 
 
@@ -254,15 +254,7 @@ public class Project implements CITS2200Project{
         }
         
         String[][] comp = new String[L.size()][largestComponant];
-        int eye = 0;
-        int jay = 0;
-        for (ArrayList<String> sublist: strongComponants){
-            for (String str : sublist){
-                comp[eye][jay] = str;
-                jay++;
-            }
-            eye++;
-        }
+        
 
         return comp;
     }
@@ -342,16 +334,19 @@ public class Project implements CITS2200Project{
         return;
     }
 
-    private void assign(Vertex u, int root){
+    private void assign(Vertex u, int root, int firstPart){
         // if u hasnt been assigned to a componant
             // assign u as componant root
             // for each neighbour of u, v assign(v, root)
         System.out.println("Assign " + u.name() + " to " + Integer.toString(root));
         if (tree.get(u.getVertNum()).getComponant() == -1){
+            if (firstPart == 1){
+                numComponants += 1;
+            }
             System.out.println("         adding " + tree.get(u.getVertNum()).name());
             tree.get(u.getVertNum()).setComponant(root);
             for (int i = 0; i < u.getAllLinks().size(); i++){
-                assign(tree.get(u.getlink(i).getIndex()), root);
+                assign(tree.get(u.getlink(i).getIndex()), root, 0);
             }
         }
 
