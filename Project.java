@@ -335,7 +335,7 @@ public class Project implements CITS2200Project{
             for (int i = 0; i < v.getAllLinks().size(); i++){
                 visit(tree.get(v.getlink(i).getIndex()));
             }
-            L.add(0, tree.get(v.getVertNum()));
+            L.add(tree.get(v.getVertNum()));
             
         }
         System.out.println("Returning " + v.name());
@@ -354,6 +354,7 @@ public class Project implements CITS2200Project{
                 assign(tree.get(u.getlink(i).getIndex()), root);
             }
         }
+
         return;
     }
 
