@@ -20,17 +20,15 @@ so the graph is set up like this
                                   ArrayList<Edge> links = {
                                                             Edge1,
                                                             Edge2{
-                                                            String nameOfToVertex;
-                                                            int indexOfToVertex;
-                                                            int explored;
+                                                                  String nameOfToVertex;
+                                                                  int indexOfToVertex;
                                                             },
+                                                            Edge3,
                                                             ...,
                                                             EdgeN
-  }
-                                  int inStack;
-                                  int explored;
-                                  int parentIdx;
+                                                          }
                               },
+                              Vertex3,
                               ...,
                               VertexN
   }
