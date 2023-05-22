@@ -215,15 +215,9 @@ public class Project implements CITS2200Project{
             
             visit(tree.get(i));
         }
-        // System.out.println("L:");
-        // for (Vertex vert : L){
-        //     System.out.println(vert.name());
-        // }
-        // System.out.println("\n");
 
         // for each element u in order of L assign it
         for (int i = 0; i < L.size(); i++){
-            //System.out.println("Now creating new componant starting with "+ tree.get(L.get(i).getVertNum()).name() + " index in tree = " + tree.get(L.get(i).getVertNum()).getVertNum());
             assign(tree.get(L.get(i).getVertNum()), 1);
 
         }
@@ -301,17 +295,12 @@ public class Project implements CITS2200Project{
 
     private boolean dfs(Vertex v, int inStackCount, int n){
         if (inStackCount == n){
-            //System.out.println("Found Path adding " + v.name());
             HamiltonianPath.add(v.name());
             return true;
         }
-        // System.out.println("       v.getAllLinks().size = " + Integer.toString(v.getAllLinks().size()));
         for (int i = 0; i < v.getAllLinks().size(); i++){
-            //System.out.println("          v.getlink(i).getIndex() = " + Integer.toString(v.getlink(i).getIndex()));
-            //System.out.println("             tree.get(v.getlink(i).getIndex()).getStack() = " + Integer.toString(tree.get(v.getlink(i).getIndex()).getStack()));
             if (tree.get(v.getlink(i).getIndex()).getStack() == 0){
                 tree.get(v.getlink(i).getIndex()).setStack(1);
-                // System.out.println("Now checking " + tree.get(v.getlink(i).getIndex()).name());
                 if (dfs(tree.get(v.getlink(i).getIndex()), inStackCount+1, n)){
                     HamiltonianPath.add(v.name());
                     return true;
@@ -329,7 +318,6 @@ public class Project implements CITS2200Project{
             // set as visited
             // for each neighbour of vertex visit it
             // prepend the vertex v to L
-        //System.out.println("Visiting " + v.name());
         if (v.getExplored() == 0){
             tree.get(v.getVertNum()).setExplored(1);
             for (int i = 0; i < v.getAllLinks().size(); i++){
@@ -338,7 +326,6 @@ public class Project implements CITS2200Project{
             L.add(tree.get(v.getVertNum()));
             
         }
-        //System.out.println("Returning " + v.name());
         return;
     }
 
@@ -346,12 +333,10 @@ public class Project implements CITS2200Project{
         // if u hasnt been assigned to a componant
             // assign u as componant root
             // for each neighbour of u, v assign(v, root)
-        //System.out.println("Assign " + u.name() + " to " + Integer.toString(numComponants));
         if (tree.get(u.getVertNum()).getComponant() == -1){
             if (firstPart == 1){
                 numComponants += 1;
             }
-            //System.out.println("         adding " + tree.get(u.getVertNum()).name());
             tree.get(u.getVertNum()).setComponant(numComponants);
             for (int i = 0; i < u.getAllLinks().size(); i++){
                 assign(tree.get(u.getlink(i).getIndex()), 0);
