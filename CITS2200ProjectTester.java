@@ -113,6 +113,21 @@ public class CITS2200ProjectTester {
                 System.out.println("Failed: needed 17 got " + Integer.toString(test1) + "\n");
             }
         }
+        if (path.equals("testData2.txt")){
+            int test0 = project.getShortestPath("/wiki/test3", "/wiki/test10");
+            if (test0 == 7){
+                System.out.println("Passed 0: needed 7 got " + Integer.toString(test0) + "\n");
+            } else{
+                System.out.println("Failed: needed 7 got " + Integer.toString(test0)+ "\n");
+            }
+            int test1 = project.getShortestPath("/wiki/test10", "/wiki/test1");
+            if (test1 == -1){
+                System.out.println("Passed 1: needed -1 got " + Integer.toString(test1) + "\n");
+            } else{
+                System.out.println("Failed: needed -1 got " + Integer.toString(test1) + "\n");
+            }
+        }
+
         
         
     }
