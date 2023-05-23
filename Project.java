@@ -278,7 +278,6 @@ public class Project implements CITS2200Project{
 
         for (int i = 0; i < tree.size(); i++){
             tree.get(i).setStack(1);
-            // System.out.println("Now checking " + tree.get(i).name());
             if (dfs(tree.get(i), 1, tree.size())){
                 break;
             }
