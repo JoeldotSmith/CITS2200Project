@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.concurrent.TimeUnit;
 // to compile and run/test
 // javac CITS220ProjectTester.java
 // java CITS220ProjectTester.java
@@ -76,6 +76,7 @@ public class Project implements CITS2200Project{
      */
     public int getShortestPath(String urlFrom, String urlTo) {
         // TODO fix bug where returns a path not the smallest path see CITS2200ProjectTester.java running example_graph.txt test4
+        long startTime = System.nanoTime();
 
         if (tree.isEmpty()){
             throw new IllegalStateException("Tree size = 0 need to addEdge() first");
@@ -144,7 +145,6 @@ public class Project implements CITS2200Project{
                         break;
                     }
                     queue.add(tree.get(wInt));
-                    
                 }
             }
         }
@@ -164,6 +164,8 @@ public class Project implements CITS2200Project{
         }
 
         System.out.println(path.name());
+        long finalTime = System.nanoTime() - startTime;
+        System.out.println("Time taken: " + finalTime + " nanoseconds");
         return count;
     }
 
@@ -201,11 +203,6 @@ public class Project implements CITS2200Project{
             assign(tree.get(L.get(i).getVertNum()), 1);
 
         }
-
-
-
-
-
 
 
         // Converting to correct type String[][] seperate from algorithm
