@@ -186,7 +186,7 @@ public class Project implements CITS2200Project{
             throw new IllegalStateException("Tree size = 0 need to addEdge() first");
         }
 
-
+        long startTime = System.nanoTime();
         // for each vertex of the graph set as unvisted
         for (int i = 0; i < tree.size(); i++){
             tree.get(i).setExplored(0);
@@ -234,7 +234,8 @@ public class Project implements CITS2200Project{
         }
         
         
-
+        long finalTime = System.nanoTime() - startTime;
+        System.out.println("Time taken: " + finalTime + " nanoseconds");
         return comp;
     }
 
@@ -246,6 +247,7 @@ public class Project implements CITS2200Project{
      * https://www.hackerearth.com/practice/algorithms/graphs/hamiltonian-path/tutorial/#:~:text=Hamiltonian%20Path%20is%20a%20path,Hamiltonian%20Paths%20in%20a%20graph.
      */
     public String[] getHamiltonianPath() {
+        long startTime = System.nanoTime();
         if (tree.size() > 20){
             throw new IllegalStateException("Tree too large for Hamiltonian path: tree.size() must be <20");
         }
@@ -265,6 +267,9 @@ public class Project implements CITS2200Project{
         for (int i = 0; i < HamiltonianPath.size(); i++){
             result[i] = HamiltonianPath.get(HamiltonianPath.size() - 1 - i);
         }
+
+        long finalTime = System.nanoTime() - startTime;
+        System.out.println("Time taken: " + finalTime + " nanoseconds");
 
         return result;
     }
