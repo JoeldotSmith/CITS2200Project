@@ -1,5 +1,4 @@
 /wiki/test0
-/wiki/test0
 /wiki/test1
 /wiki/test1
 /wiki/test2
