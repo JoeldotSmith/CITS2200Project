@@ -151,14 +151,21 @@ public class Project implements CITS2200Project{
         Vertex path = tree.get(finalIndex);
 
         if (path.getParent() == -1){
+            long finalTime = System.nanoTime() - startTime;
+            System.out.println("Time taken: " + finalTime + " nanoseconds");
             return -1;
         }
 
         
         while (path.getVertNum() != rootIndex){
             System.out.println(path.name());
-            // System.out.println(Integer.toString(path.parentNum));
+            
             count += 1;
+            if (path.getParent() == -1){
+                long finalTime = System.nanoTime() - startTime;
+        System.out.println("Time taken: " + finalTime + " nanoseconds");
+                return -1;
+            }
             path = tree.get(path.getParent());
         }
 
