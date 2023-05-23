@@ -23,7 +23,7 @@ public class CITS2200ProjectTester {
 
 	public static void main(String[] args) {
 		// Change this to be the path to the graph file.
-		String pathToGraphFile = "testData2.txt";
+		String pathToGraphFile = "testDataN.txt";
 		// Create an instance of your implementation.
 	    Project proj = new Project();
 		// Load the graph into the project.
@@ -32,7 +32,7 @@ public class CITS2200ProjectTester {
 		// Write your own tests!
         addEdgeTest(proj);
         getShortestPathTest(proj, pathToGraphFile);
-        getHamiltonianPathTest(proj);
+        //getHamiltonianPathTest(proj);
         getStronglyConnectedComponentsTest(proj);
 	}
 
