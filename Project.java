@@ -114,22 +114,11 @@ public class Project implements CITS2200Project{
             throw new IllegalArgumentException("urlFrom or urlTo not in tree");
         }
 
-
-        // System.out.println("RootIndex = " + rootIndex);
-        // System.out.println("FinalIndex = " + finalIndex + "\n");
-
-
         tree.get(rootIndex).setExplored(1);
         queue.add(tree.get(rootIndex));
 
         while (!queue.isEmpty() && !stop){
             Vertex v = queue.remove(0);
-
-
-
-            // System.out.println("Current location: " + v.getVertNum());
-
-
 
             if (v.getVertNum() == finalIndex){
                 stop = true;
@@ -137,8 +126,6 @@ public class Project implements CITS2200Project{
             }
 
       tree.get(v.getVertNum()).setExplored(1);
-
-
 
             for (int eachEdge = 0; eachEdge < v.links.size(); eachEdge++){
                 Edge w = v.getlink(eachEdge);
@@ -149,21 +136,14 @@ public class Project implements CITS2200Project{
                     }
                 }
 
-
-
-                // System.out.println("Checking if index " + wInt + "(" + w.getVertName() + ")" + " has been explored");
-
-
                 if (tree.get(wInt).getExplored() == 0){
                     
                     tree.get(wInt).setParent(v.getVertNum());
-                    // System.out.println("Setting index " + wInt + " parent to " + v.getVertNum());
                     if (tree.get(wInt).getVertNum() == finalIndex){
                         stop = true;
                         break;
                     }
                     queue.add(tree.get(wInt));
-                    
                     
                 }
             }
