@@ -1,4 +1,4 @@
-n = 5
+n = 15
 
 f = open("/Users/joelsmith/VSCode/CITS2200Project/testDataN.txt", 'w')
 
