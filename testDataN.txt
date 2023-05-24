@@ -28,3 +28,13 @@
 /wiki/test14
 /wiki/test14
 /wiki/test15
+/wiki/test15
+/wiki/test16
+/wiki/test16
+/wiki/test17
+/wiki/test17
+/wiki/test18
+/wiki/test18
+/wiki/test19
+/wiki/test19
+/wiki/test20

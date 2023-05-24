@@ -5,8 +5,8 @@ This is the fastest that this function will run on size V
 | Size(V)  | Time(ns)  |
 |---|---|
 | 5  | 10875  |
-| 10  | 60125  |
-| 15  |   |
+| 10  | 17291  |
+| 15  |  16541 |
 |  20 |   |
 
 
