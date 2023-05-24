@@ -32,7 +32,7 @@ public class CITS2200ProjectTester {
 		// Write your own tests!
         addEdgeTest(proj);
         getShortestPathTest(proj, pathToGraphFile);
-        //getHamiltonianPathTest(proj);
+        getHamiltonianPathTest(proj);
         getStronglyConnectedComponentsTest(proj);
 	}
 
@@ -155,11 +155,11 @@ public class CITS2200ProjectTester {
             for (String[] sArr : result){
                 for (String str : sArr){
                     if (str != null){
-                        //System.out.println(str);
+                        System.out.println(str);
                     }
                     
                 }
-                //System.out.println("\n");
+                System.out.println("\n");
             }
         }
     }
