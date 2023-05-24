@@ -1,6 +1,4 @@
-# make sure to delete line one in testDataN.txt after running
-
-n = 2000
+n = 5
 
 f = open("/Users/joelsmith/VSCode/CITS2200Project/testDataN.txt", 'w')
 
