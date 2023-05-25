@@ -254,7 +254,7 @@ public class Project implements CITS2200Project{
      */
     public String[] getHamiltonianPath() {
         long startTime = System.nanoTime();
-        if (tree.size() > 20){
+        if (tree.size() > 21){
             throw new IllegalStateException("Tree too large for Hamiltonian path: tree.size() must be <20");
         }
         if (tree.size() == 0){

@@ -7,7 +7,7 @@ This is the fastest that this function will run on size V
 | 5  | 10875  |
 | 10  | 17291  |
 | 15  |  16541 |
-|  20 |   |
+|  20 |  19708 |
 
 
 
