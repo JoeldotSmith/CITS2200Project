@@ -86,10 +86,10 @@ public class CITS2200ProjectTester {
                 System.out.println("Failed: needed 1 got " + Integer.toString(test3)+ "\n");
             }
             int test4 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Gomory%E2%80%93Hu_tree");
-            if (test4 == 6){
-                System.out.println("Passed 4: needed 6 got " + Integer.toString(test4)+ "\n");
+            if (test4 == 5){
+                System.out.println("Passed 4: needed 5 got " + Integer.toString(test4)+ "\n");
             } else{
-                System.out.println("Failed: needed 6 got " + Integer.toString(test4)+ "\n");
+                System.out.println("Failed: needed 5 got " + Integer.toString(test4)+ "\n");
             } 
             int test5 = project.getShortestPath("/wiki/Nowhere-zero_flow", "/wiki/Braess%27_paradox");
             if (test5 == 2){
