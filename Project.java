@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+// import java.util.ArrayList;
+import java.util.*;
 
 // to compile and run/test
 // javac CITS220ProjectTester.java
@@ -20,9 +21,6 @@ public class Project implements CITS2200Project{
         return numOfVertex;
     }
 
-
-
-
     public void addEdge(String urlFrom, String urlTo) {
         boolean fromInTree = false;
         boolean toInTree = false;
@@ -37,7 +35,6 @@ public class Project implements CITS2200Project{
                     toInTree = true;
                     toIndex = vert.getVertNum();
                 }
-
             }
         }
 
@@ -175,31 +172,106 @@ public class Project implements CITS2200Project{
             return -1;
         }
 
-        
         while (path.getVertNum() != rootIndex){
-            System.out.println(path.name());
+            // System.out.println(path.name());
             // System.out.println(Integer.toString(path.parentNum));
             count += 1;
             path = tree.get(path.getParent());
         }
 
-        System.out.println(path.name());
+        // System.out.println(path.name());
         return count;
     }
 
-    @Override
-    public String[] getCenters() {
-        // TODO part 4 getCenters()
-        throw new UnsupportedOperationException("Unimplemented method 'getCenters'");
+    public String[] getCenters() 
+    {
+        if (tree.isEmpty()) 
+        {
+            throw new IllegalStateException("You tried to get centres however the tree is empty");
+        }
+
+        int[][] adjacencyMatrix = generateAdjacencyMatrix(tree);
+        int[] eccentricities = new int[tree.size()];
+
+        for (int i = 0; i < tree.size(); i++) //iterates through all vertexes
+        { 
+            eccentricities[i] = getRelativeDistances(adjacencyMatrix, i);
+        }
+
+        int centerEccentricity = Arrays.stream(eccentricities).min().orElse(-1);
+
+        List<String> centers = new ArrayList<>();
+
+        for (int i = 0; i < tree.size(); i++) 
+        {
+            if (eccentricities[i] == centerEccentricity) 
+            {
+                centers.add(tree.get(i).name());
+            }
+        }
+
+        return centers.toArray(new String[0]);
     }
-    
+
+    private int[][] generateAdjacencyMatrix(ArrayList<Vertex> tree) 
+    {
+        int size = tree.size();
+        int[][] adjacencyMatrix = new int[size][size];
+
+        for (int i = 0; i < size; i++) 
+        {
+            Vertex vertex = tree.get(i);
+            int vertexNum = vertex.getVertNum();
+            ArrayList<Edge> edges = vertex.getAllLinks();
+
+            for (Edge edge : edges) 
+            {
+                int toIndex = edge.getIndex();
+                adjacencyMatrix[vertexNum][toIndex] = 1;
+                adjacencyMatrix[toIndex][vertexNum] = 1;
+            }
+        }
+
+        return adjacencyMatrix;
+    }
+
+    private int getRelativeDistances(int[][] adjacencyMatrix, int vertexIndex)
+    {
+        int size = adjacencyMatrix.length;
+        int[] distances = new int[size];
+        Arrays.fill(distances, Integer.MAX_VALUE);
+        distances[vertexIndex] = 0;
+
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(vertexIndex);
+
+        while (queue.isEmpty() == false) 
+        {
+            int current = queue.poll();
+
+            for (int i = 0; i < size; i++) 
+            {
+                if (adjacencyMatrix[current][i] == 1 && distances[i] == Integer.MAX_VALUE) 
+                {
+                    distances[i] = distances[current] + 1;
+                    queue.add(i);
+                }
+            }
+        }
+
+        int maxDistance = Arrays.stream(distances).max().orElse(-1);
+
+        return maxDistance == Integer.MAX_VALUE ? -1 : maxDistance;
+    }
+
     /*
      * Part 3
      * Two pass algorithm utilising depth first search
      * https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
      * 
      */
-    public String[][] getStronglyConnectedComponents() {
+    public String[][] getStronglyConnectedComponents() 
+    {
         if (tree.size() == 0){
             throw new IllegalStateException("Tree size = 0 need to addEdge() first");
         }
@@ -227,12 +299,6 @@ public class Project implements CITS2200Project{
             assign(tree.get(L.get(i).getVertNum()), 1);
 
         }
-
-
-
-
-
-
 
         // Converting to correct type String[][] seperate from algorithm
         ArrayList<ArrayList<String>> strongComponants = new ArrayList<>();

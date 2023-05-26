@@ -23,7 +23,7 @@ public class CITS2200ProjectTester {
 
 	public static void main(String[] args) {
 		// Change this to be the path to the graph file.
-		String pathToGraphFile = "testData2.txt";
+		String pathToGraphFile = "example_graph.txt";
 		// Create an instance of your implementation.
 	    Project proj = new Project();
 		// Load the graph into the project.
@@ -34,8 +34,8 @@ public class CITS2200ProjectTester {
         getShortestPathTest(proj, pathToGraphFile);
         getHamiltonianPathTest(proj);
         getStronglyConnectedComponentsTest(proj);
+        getCentresTest(proj);
 	}
-
 
     public static void addEdgeTest(Project project){
         int count = 0;
@@ -146,6 +146,15 @@ public class CITS2200ProjectTester {
                 }
                 System.out.println("\n");
             }
+        }
+    }
+
+    public static void getCentresTest(Project project){
+        System.out.println("\ngetCentresTest\n");
+        String[] result = project.getCenters();
+        for (String element : result)
+        {
+            System.out.println(element);
         }
     }
 }
