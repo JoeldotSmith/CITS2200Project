@@ -74,7 +74,7 @@ public class Project implements CITS2200Project{
      * 
      */
     public int getShortestPath(String urlFrom, String urlTo) {
-        // TODO fix bug where returns a path not the smallest path see CITS2200ProjectTester.java running example_graph.txt test4
+        
         long startTime = System.nanoTime();
 
         if (tree.isEmpty()){
@@ -177,8 +177,11 @@ public class Project implements CITS2200Project{
 
     public String[] getCenters() 
     {
+        long start = System.nanoTime();
         if (tree.isEmpty()) 
-        {
+        {   
+            long end = System.nanoTime() - start;
+            System.out.println("Time taken: " + end + " nanoseconds");
             throw new IllegalStateException("You tried to get centres however the tree is empty");
         }
 
@@ -187,7 +190,7 @@ public class Project implements CITS2200Project{
 
         for (int i = 0; i < tree.size(); i++) //iterates through all vertexes
         { 
-            eccentricities[i] = getRelativeDistances(adjacencyMatrix, i);
+            eccentricities[i] = getEccentricity(adjacencyMatrix, i);
         }
 
         int centerEccentricity = Arrays.stream(eccentricities).min().orElse(-1);
@@ -202,6 +205,8 @@ public class Project implements CITS2200Project{
             }
         }
 
+        long end = System.nanoTime() - start;
+        System.out.println("Time taken: " + end + " nanoseconds");
         return centers.toArray(new String[0]);
     }
 
