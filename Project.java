@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 // to compile and run/test
 // javac CITS220ProjectTester.java
 // java CITS220ProjectTester.java
@@ -175,10 +175,85 @@ public class Project implements CITS2200Project{
         return count;
     }
 
-    @Override
-    public String[] getCenters() {
-        // TODO part 4 getCenters()
-        throw new UnsupportedOperationException("Unimplemented method 'getCenters'");
+    public String[] getCenters() 
+    {
+        if (tree.isEmpty()) 
+        {
+            throw new IllegalStateException("You tried to get centres however the tree is empty");
+        }
+
+        int[][] adjacencyMatrix = generateAdjacencyMatrix(tree);
+        int[] eccentricities = new int[tree.size()];
+
+        for (int i = 0; i < tree.size(); i++) //iterates through all vertexes
+        { 
+            eccentricities[i] = getRelativeDistances(adjacencyMatrix, i);
+        }
+
+        int centerEccentricity = Arrays.stream(eccentricities).min().orElse(-1);
+
+        List<String> centers = new ArrayList<>();
+
+        for (int i = 0; i < tree.size(); i++) 
+        {
+            if (eccentricities[i] == centerEccentricity) 
+            {
+                centers.add(tree.get(i).name());
+            }
+        }
+
+        return centers.toArray(new String[0]);
+    }
+
+    private int[][] generateAdjacencyMatrix(ArrayList<Vertex> tree) 
+    {
+        int size = tree.size();
+        int[][] adjacencyMatrix = new int[size][size];
+
+        for (int i = 0; i < size; i++) 
+        {
+            Vertex vertex = tree.get(i);
+            int vertexNum = vertex.getVertNum();
+            ArrayList<Edge> edges = vertex.getAllLinks();
+
+            for (Edge edge : edges) 
+            {
+                int toIndex = edge.getIndex();
+                adjacencyMatrix[vertexNum][toIndex] = 1;
+                adjacencyMatrix[toIndex][vertexNum] = 1;
+            }
+        }
+
+        return adjacencyMatrix;
+    }
+
+    private int getEccentricity(int[][] adjacencyMatrix, int vertexIndex)
+    {
+        int size = adjacencyMatrix.length;
+        int[] distances = new int[size];
+        Arrays.fill(distances, Integer.MAX_VALUE);
+        distances[vertexIndex] = 0;
+
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(vertexIndex);
+
+        while (queue.isEmpty() == false) 
+        {
+            int current = queue.poll();
+
+            for (int i = 0; i < size; i++) 
+            {
+                if (adjacencyMatrix[current][i] == 1 && distances[i] == Integer.MAX_VALUE) 
+                {
+                    distances[i] = distances[current] + 1;
+                    queue.add(i);
+                }
+            }
+        }
+
+        int maxDistance = Arrays.stream(distances).max().orElse(-1);
+
+        return maxDistance == Integer.MAX_VALUE ? -1 : maxDistance;
     }
     
     /*
