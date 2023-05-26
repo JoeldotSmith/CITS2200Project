@@ -34,6 +34,7 @@ public class CITS2200ProjectTester {
         getShortestPathTest(proj, pathToGraphFile);
         getHamiltonianPathTest(proj);
         getStronglyConnectedComponentsTest(proj);
+        getCentersTest(proj);
 	}
 
 
@@ -160,6 +161,17 @@ public class CITS2200ProjectTester {
                     
                 }
                 System.out.println("\n");
+            }
+        }
+    }
+    public static void getCentersTest(Project project){
+        System.out.println("\ngetCentersTest\n");
+        String[] result = project.getCenters();
+        if (result.length == 0){
+            System.out.println("No Centers Found");
+        } else{
+            for (String s : result){
+                System.out.println(s);
             }
         }
     }
