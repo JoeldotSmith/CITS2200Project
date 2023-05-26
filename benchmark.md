@@ -42,3 +42,10 @@ Run on 2020 M1 Macbook Pro
 | Size(V)  | Time (ns)  |
 |---|---|
 |  17 | 88500  |
+
+#### Get Centers
+Run on M1 Macbook Pro
+##### example_graph.txt
+|  Size(V) | Time(ns)  |
+|---|---|
+| 17  |  8920167 |
