@@ -28,7 +28,7 @@ public class Project implements CITS2200Project{
         int toIndex = -1;
 
         if (numOfVertex != 0){
-            for (Vertex vert : tree){
+         for (Vertex vert : tree){
                 if (vert.name().equals(urlFrom)){
                     fromInTree = true;
                 }
